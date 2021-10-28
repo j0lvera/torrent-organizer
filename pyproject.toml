@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "torrent-organizer"
+version = "0.1.0"
+description = ""
+authors = ["Juan Olvera <juan@jolvera.dev>"]
+
+[tool.poetry.scripts]
+torrent_organizer = "torrent_organizer.console.run:cli"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+parse-torrent-title = "^2.3"
+pydantic = "^1.8.2"
+click = "^8.0.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+black = "^21.9b0"
+pylint = "^2.11.1"
+pytest-watch = "^4.2.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
