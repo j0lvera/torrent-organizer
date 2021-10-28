@@ -26,5 +26,5 @@ def organize(source, destination, extensions=config.extensions):
             original_file = Path(media_file_path)
             original_file.link_to(destination_file_path)
 
-        except FileExistsError:
-            print("File exists. Skipping.")
+        except (FileExistsError, PermissionError):
+            print("File exists or permission error. Skipping.")

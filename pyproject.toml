@@ -1,8 +1,10 @@
 [tool.poetry]
 name = "torrent-organizer"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Juan Olvera <juan@jolvera.dev>"]
+homepage = "https://github.com/j0lv3r4/torrent-organizer"
+repository = "https://github.com/j0lv3r4/torrent-organizer"
 
 [tool.poetry.scripts]
 torrent_organizer = "torrent_organizer.console.run:cli"
