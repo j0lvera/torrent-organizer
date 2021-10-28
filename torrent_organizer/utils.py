@@ -2,7 +2,22 @@ import PTN
 from itertools import chain
 from pathlib import Path, PurePath
 from typing import Union, List
+from torrent_organizer.config import Config
 from torrent_organizer.models import MediaFile
+from torrent_organizer.exceptions import InIgnoreList
+
+
+config = Config()
+
+
+def has_ignored_words(item: str) -> bool:
+    ignore_list = Config().ignore_list
+
+    for ignore_word in ignore_list:
+        if ignore_word in item.lower():
+            return True
+
+    return False
 
 
 def get_media(
@@ -18,9 +33,8 @@ def get_media(
         files = [
             MediaFile(name=file.name, path=str(file)).dict()
             for file in list(path.rglob(pattern))
+            if not has_ignored_words(str(file))
         ]
-
-        print("files", files)
 
         # Skip empty lists
         if files:

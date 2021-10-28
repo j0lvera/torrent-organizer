@@ -14,10 +14,15 @@ DEFAULT_EXTENSIONS = "mp4,mkv"
     default=DEFAULT_EXTENSIONS,
     metavar="<str>",
 )
-def cli(source, destination, extensions):
+@click.option(
+    "--fast",
+    help=f"Run the organizer fast without sleep. By default the organizer sleeps for 5 seconds.",
+    default=False,
+)
+def cli(source, destination, extensions, fast):
     """
     Organizes torrent files by creating hardlinks from <source> to <destination>
     with the format "Title (Year)/Title (Year).extension".
     """
 
-    organize(source, destination, extensions)
+    organize(source, destination, extensions, fast)

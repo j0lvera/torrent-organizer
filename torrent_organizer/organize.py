@@ -1,3 +1,5 @@
+import click
+from time import sleep
 from pathlib import Path
 from torrent_organizer.config import Config
 from torrent_organizer.utils import get_media, format_name
@@ -5,7 +7,7 @@ from torrent_organizer.utils import get_media, format_name
 config = Config()
 
 
-def organize(source, destination, extensions=config.extensions):
+def organize(source, destination, extensions=config.extensions, fast=False):
     extensions = extensions.split(",")
     list_of_files = get_media(source, extensions)
 
@@ -25,6 +27,11 @@ def organize(source, destination, extensions=config.extensions):
             # Create hard links
             original_file = Path(media_file_path)
             original_file.link_to(destination_file_path)
+
+            click.echo(f"Hardlink created for {formatted_file_name}")
+
+            if not fast:
+                sleep(2)
 
         except (FileExistsError, PermissionError):
             print("File exists or permission error. Skipping.")

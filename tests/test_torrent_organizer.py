@@ -1,6 +1,7 @@
 from pathlib import Path, PurePath
 from torrent_organizer import __version__
-from torrent_organizer.utils import get_media, format_name
+from torrent_organizer.utils import get_media, format_name, has_ignored_words
+from torrent_organizer.config import Config
 
 
 def test_version():
@@ -60,3 +61,20 @@ def test_format_name():
         "Akira - 30th Anniversary Edition (1988).mkv",
         "Vampire Hunter D (1985).mp4",
     ]
+
+
+def test_has_ignored_words():
+    # ignore_list = Config().ignore_list
+
+    assert has_ignored_words("Toward the Terra - Extra (1980).mkv")
+    assert has_ignored_words("Venus Wars - Extra - CPM Trailer")
+
+
+# def has_ignored_words(item: str) -> bool:
+#     ignore_list = Config().ignore_list
+#
+#     for ignore_word in ignore_list:
+#         if ignore_word in item.lower():
+#             return True
+#
+#     return False

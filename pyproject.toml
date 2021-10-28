@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "torrent-organizer"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["Juan Olvera <juan@jolvera.dev>"]
 homepage = "https://github.com/j0lv3r4/torrent-organizer"
